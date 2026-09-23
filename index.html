@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Clientes</title>
+</head>
+<body>
+     <h1>Cadastrar Cliente</h1>
+     <hr>
+     <form action="" id="formCliente">
+        <label for="nome">
+            Nome:
+            <input type="text" id="nome" required placeholder="Digite o seu nome">
+        </label>
+         <br><br>
+        <label for="sobrenome">
+            <input type="text" id="sobrenome" required placeholder="Sobrenome">
+        </label>
+        <br><br>
+        <label for="email">
+            Email:
+            <input type="email" name="email" id="email" required placeholder="Digite o email">
+        </label>
+         <br><br>
+        <label for="telefone">
+            Telefone:
+            <input type="text" name="telefone" id="telefone" required placeholder="XX X XXXXXXXX" maxlength="11" minlength="11">
+        </label>
+        <br><br>
+        <label for="senha">
+            Senha:
+            <input type="password" name="senha" id="senha" required placeholder="Crie uma senha...">
+            <input type="password" name="senha" id="senha" required placeholder="Confirme sua senha...">
+        </label>
+         <br><br>
+         <button type="submit">Salvar Dados</button>
+        </form>
+        <hr>
+        <br>
+        <hr>
+        <form action="">
+            <div id="msg"></div>
+            <br><br>
+            <button id="listarClientes">Listar Clientes</button>
+            <br><br>
+            <input type="number" id="idExcluir" required placeholder="ID do cliente a ser excluído" hidden>
+             <br><br>
+             <button id="excluirClientes">Excluir Clientes</button>
+             <button id="excluir" hidden>Excluir</button>
+        </form>
+</body>
+</html>
