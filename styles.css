@@ -1,0 +1,323 @@
+/* ==========================================================================
+   Cadastro de Clientes — pop anos 80
+   Rosa choque, glitter, confete Memphis, contornos grossos e sombras duras.
+   ========================================================================== */
+
+:root {
+    --rosa: #ff3d9a;
+    --rosa-glitter: #ff5fae;
+    --magenta: #c2106e;
+    --magenta-escuro: #8a0c52;
+    --amarelo: #ffd21f;
+    --laranja: #ff6b2c;
+    --turquesa: #19c3b1;
+    --cobalto: #2b3fd6;
+    --tinta: #1b0b2e;
+    --papel: #fff9f1;
+
+    --fonte-titulo: "Shrikhand", "Cooper Black", Georgia, serif;
+    --fonte-texto: "Fredoka", "Trebuchet MS", system-ui, sans-serif;
+    --fonte-mao: "Caveat Brush", "Comic Sans MS", cursive;
+
+    --borda: 3px solid var(--tinta);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: clamp(1.5rem, 5vw, 3.5rem) 1rem 4rem;
+    color: var(--tinta);
+    font-family: var(--fonte-texto);
+    font-size: 1.0625rem;
+    line-height: 1.45;
+    /* confete Memphis sobre rosa choque, com um escurecido nas bordas */
+    background:
+        radial-gradient(ellipse at 50% 40%, transparent 45%, rgba(138, 12, 82, 0.45) 100%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cg fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 44q10-16 20 0t20 0t20 0' stroke='%23ffd21f' stroke-width='6'/%3E%3Cpath d='M170 28l30 52h-60z' stroke='%2319c3b1' stroke-width='5'/%3E%3Ccircle cx='90' cy='226' r='14' stroke='%232b3fd6' stroke-width='6'/%3E%3Cpath d='M120 130v28M106 144h28' stroke='%23fff' stroke-width='5'/%3E%3Cpath d='M170 232l10-12l10 12l10-12l10 12' stroke='%23fff' stroke-width='4'/%3E%3C/g%3E%3Ccircle cx='222' cy='160' r='11' fill='%23ff6b2c'/%3E%3Cg fill='%232b3fd6'%3E%3Ccircle cx='30' cy='160' r='3.5'/%3E%3Ccircle cx='46' cy='160' r='3.5'/%3E%3Ccircle cx='62' cy='160' r='3.5'/%3E%3Ccircle cx='30' cy='176' r='3.5'/%3E%3Ccircle cx='46' cy='176' r='3.5'/%3E%3Ccircle cx='62' cy='176' r='3.5'/%3E%3C/g%3E%3Cpath d='M30 96l14 24h-28z' fill='%23ffd21f'/%3E%3Cpath d='M226 100a14 14 0 0 1-28 0z' fill='%2319c3b1'/%3E%3C/svg%3E"),
+        var(--rosa);
+}
+
+.palco {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.75rem;
+    max-width: 34rem;
+    margin-inline: auto;
+}
+
+/* --------------------------------------------------------------------------
+   Título: amarelo gritante, contorno de tinta e extrusão em 3D
+   -------------------------------------------------------------------------- */
+
+.titulo {
+    position: relative;
+    margin: 0.5rem 0 0;
+    max-width: 11ch;
+    text-align: center;
+    text-wrap: balance;
+    font-family: var(--fonte-titulo);
+    font-weight: 400;
+    font-size: clamp(2.8rem, 11vw, 5rem);
+    line-height: 1.02;
+    color: var(--amarelo);
+    rotate: -3deg;
+    text-shadow:
+        /* contorno */
+        -3px -3px 0 var(--tinta), 0 -3px 0 var(--tinta), 3px -3px 0 var(--tinta),
+        -3px 0 0 var(--tinta), 3px 0 0 var(--tinta),
+        -3px 3px 0 var(--tinta), 0 3px 0 var(--tinta), 3px 3px 0 var(--tinta),
+        /* extrusão */
+        4px 4px 0 var(--magenta-escuro), 5px 5px 0 var(--magenta-escuro),
+        6px 6px 0 var(--magenta-escuro), 7px 7px 0 var(--magenta-escuro),
+        8px 8px 0 var(--magenta-escuro), 9px 9px 0 var(--magenta-escuro),
+        10px 10px 0 var(--tinta);
+}
+
+.titulo::before,
+.titulo::after {
+    /* brilhos de quatro pontas */
+    content: "";
+    position: absolute;
+    background: #fff;
+    clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);
+    filter: drop-shadow(2px 2px 0 var(--tinta));
+}
+
+.titulo::before {
+    width: 2.2rem;
+    height: 2.2rem;
+    top: -1rem;
+    right: -0.8rem;
+}
+
+.titulo::after {
+    width: 1.4rem;
+    height: 1.4rem;
+    bottom: 0.9rem;
+    right: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   Cartaz (cartão do formulário)
+   -------------------------------------------------------------------------- */
+
+.cartaz {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: var(--papel);
+    border: 4px solid var(--tinta);
+    border-radius: 24px;
+    box-shadow: 10px 10px 0 var(--cobalto), 10px 10px 0 4px var(--tinta);
+}
+
+.cartaz::before {
+    /* faixa listrada no topo, como cartaz de cinema */
+    content: "";
+    display: block;
+    height: 1.4rem;
+    background: linear-gradient(var(--rosa) 0 25%, var(--laranja) 25% 50%, var(--amarelo) 50% 75%, var(--turquesa) 75% 100%);
+    border-bottom: 4px solid var(--tinta);
+}
+
+.formulario {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem 1rem;
+    padding: 1.6rem 1.5rem 2rem;
+}
+
+.campo {
+    grid-column: 1 / -1;
+    display: grid;
+    gap: 0.15rem;
+    min-width: 0;
+}
+
+.campo--meio {
+    grid-column: auto;
+}
+
+label {
+    font-family: var(--fonte-mao);
+    font-size: 1.4rem;
+    line-height: 1.1;
+    color: var(--magenta);
+}
+
+input {
+    width: 100%;
+    padding: 0.65rem 0.9rem;
+    font: 500 1.0625rem var(--fonte-texto);
+    color: var(--tinta);
+    background: #fff;
+    border: var(--borda);
+    border-radius: 14px;
+    box-shadow: 3px 3px 0 var(--tinta);
+    transition: box-shadow 0.12s ease, translate 0.12s ease;
+}
+
+input::placeholder {
+    color: #76688a;
+}
+
+input:focus-visible {
+    outline: 3px solid var(--cobalto);
+    outline-offset: 2px;
+    background: #fffbe0;
+    box-shadow: 5px 5px 0 var(--amarelo), 5px 5px 0 3px var(--tinta);
+    translate: -2px -2px;
+}
+
+/* --------------------------------------------------------------------------
+   Botões: pílula grossa que "afunda" quando clicada
+   -------------------------------------------------------------------------- */
+
+.botao {
+    padding: 0.8rem 1.7rem;
+    font: 600 1.15rem/1.1 var(--fonte-texto);
+    color: var(--tinta);
+    background: #fff;
+    border: var(--borda);
+    border-radius: 999px;
+    box-shadow: 4px 4px 0 var(--tinta);
+    cursor: pointer;
+    transition: box-shadow 0.12s ease, translate 0.12s ease;
+}
+
+.botao:hover {
+    translate: -2px -2px;
+    box-shadow: 6px 6px 0 var(--tinta);
+}
+
+.botao:active {
+    translate: 3px 3px;
+    box-shadow: 1px 1px 0 var(--tinta);
+}
+
+.botao:focus-visible {
+    outline: 3px solid var(--cobalto);
+    outline-offset: 3px;
+}
+
+.botao--amarelo {
+    background: var(--amarelo);
+}
+
+.botao--laranja {
+    background: var(--laranja);
+}
+
+/* Botão principal: rosa com glitter */
+.botao--principal {
+    grid-column: 1 / -1;
+    justify-self: center;
+    min-width: 14rem;
+    margin-top: 0.5rem;
+    padding-block: 1rem;
+    font-size: 1.3rem;
+    background:
+        radial-gradient(circle at 20% 30%, #fff 0 1px, transparent 2px) 0 0 / 23px 23px,
+        radial-gradient(circle at 70% 60%, #fff 0 1.2px, transparent 2.4px) 0 0 / 31px 29px,
+        radial-gradient(circle at 45% 85%, #fffbe0 0 1.5px, transparent 2.8px) 0 0 / 37px 41px,
+        linear-gradient(135deg, var(--rosa-glitter), var(--rosa) 55%, #ff2e8a);
+}
+
+.botao--principal:hover {
+    background-position: 6px 4px, -5px 8px, 9px -6px, 0 0;
+}
+
+/* --------------------------------------------------------------------------
+   Mensagens: balão de adesivo
+   -------------------------------------------------------------------------- */
+
+#msg {
+    width: 100%;
+    padding: 0.9rem 1.3rem;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.15rem;
+    overflow-wrap: anywhere;
+    background: #fff;
+    border: var(--borda);
+    border-radius: 18px;
+    box-shadow: 5px 5px 0 var(--tinta);
+    rotate: -1.2deg;
+}
+
+#msg:empty {
+    display: none;
+}
+
+#msg[data-estado="ok"] {
+    background: var(--turquesa);
+}
+
+#msg[data-estado="erro"] {
+    background: var(--laranja);
+}
+
+#msg[data-estado="info"] {
+    background: var(--amarelo);
+}
+
+/* --------------------------------------------------------------------------
+   Ações secundárias
+   -------------------------------------------------------------------------- */
+
+.acoes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem 1.25rem;
+}
+
+#idExcluir {
+    width: 15rem;
+}
+
+/* --------------------------------------------------------------------------
+   Telas estreitas
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 30rem) {
+    .formulario {
+        grid-template-columns: 1fr;
+        padding-inline: 1.1rem;
+    }
+
+    .campo--meio {
+        grid-column: 1 / -1;
+    }
+
+    .cartaz {
+        box-shadow: 7px 7px 0 var(--cobalto), 7px 7px 0 4px var(--tinta);
+    }
+
+    .titulo::before {
+        right: -0.3rem;
+    }
+
+    .titulo::after {
+        right: 0.6rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    input,
+    .botao {
+        transition: none;
+    }
+}
